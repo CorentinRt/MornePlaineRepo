@@ -8,6 +8,8 @@ public class MapGenerator : MonoBehaviour
     #region Fields
     [Header("Map Datas")]
 
+    [SerializeField] private bool _autoGenerate;
+
     [Header("Grid")]
     [SerializeField] private int _width;
     [SerializeField] private int _height;
@@ -20,6 +22,14 @@ public class MapGenerator : MonoBehaviour
 
 
     #endregion
+
+    private void Start()
+    {
+        if (_autoGenerate)
+        {
+            GenerateMap();
+        }
+    }
 
 
     [Button]
