@@ -91,7 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _width: 10
   _height: 10
-  _cellGap: 1.73
+  _hexGrid: {fileID: 2823733542143166906}
   _cellPrefab: {fileID: 561557446678914062, guid: d0e2809fb031fcc4a81843ee76a3e938,
     type: 3}
-  _hexGrid: {fileID: 2823733542143166906}
+  _cellInnerGap: 1.73
+  _cellOuterGap: 2
