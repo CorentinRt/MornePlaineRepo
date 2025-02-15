@@ -41,7 +41,7 @@ public class PlayerCameraMove : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         HandleMove();
     }
@@ -56,7 +56,7 @@ public class PlayerCameraMove : MonoBehaviour
     }
     private void HandleMove()
     {
-        _rb.AddForce(_moveDir * Time.deltaTime * _moveAcceleration);
+        _rb.AddForce(_moveDir * Time.fixedDeltaTime * _moveAcceleration);
 
         _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _moveMaxSpeed);
     }
