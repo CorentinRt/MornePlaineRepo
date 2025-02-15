@@ -7,14 +7,16 @@ public class MapGenerator : MonoBehaviour
 {
     #region Fields
     [Header("Map Datas")]
+
+    [Header("Grid")]
     [SerializeField] private int _width;
     [SerializeField] private int _height;
+    [SerializeField] private HexGrid _hexGrid;
 
+    [Header("Cells")]
+    [SerializeField] private GameObject _cellPrefab;
     [SerializeField] private float _cellGap;
 
-    [SerializeField] private GameObject _cellPrefab;
-
-    [SerializeField] private GameObject _mapContainer;
 
     #endregion
 
@@ -30,10 +32,12 @@ public class MapGenerator : MonoBehaviour
             {
                 GameObject go = Instantiate(_cellPrefab, new Vector3(_cellGap * j + midGap, transform.position.y, _cellGap * 0.75f * i), Quaternion.identity);
                 go.name = "Cell : X : " + j + " / Y : " + i;
-                go.transform.SetParent(_mapContainer.transform);
+                go.transform.SetParent(_hexGrid.transform);
 
                 Cell cell = go.GetComponent<Cell>();
                 cell.SetCoordinate(j, i);
+
+                _hexGrid.AddToHexGrid(j, i, cell);
             }
         }
     }
